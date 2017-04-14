@@ -11,6 +11,15 @@
 const babelJest = require('babel-jest');
 
 module.exports = babelJest.createTransformer({
-  presets: [require.resolve('babel-preset-react-app')],
+  presets: [
+    [
+      "es2015",
+      {
+        "modules": false
+      }
+    ],
+    "stage-0",
+    "react"
+  ],
   babelrc: false,
 });

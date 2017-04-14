@@ -156,7 +156,23 @@ prompt(
   // Add Babel config
   console.log(`  Adding ${cyan('Babel')} preset`);
   appPackage.babel = {
-    presets: ['react-app'],
+    presets: [
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ],
+      "stage-0",
+      "react"
+    ],
+    env: {
+      "test": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
   };
 
   // Add ESlint config

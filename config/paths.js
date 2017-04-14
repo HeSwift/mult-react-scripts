@@ -42,6 +42,9 @@ const nodePaths = (process.env.NODE_PATH || '')
   .filter(folder => !path.isAbsolute(folder))
   .map(resolveApp);
 
+let appname = process.argv.find(arg => arg.indexOf('app=') === 0);
+appname = appname ? appname.split('=')[1] : '';
+
 const envPublicUrl = process.env.PUBLIC_URL;
 
 function ensureSlash(path, needsSlash) {
@@ -74,12 +77,13 @@ function getServedPath(appPackageJson) {
 
 // config after eject: we're in ./config/
 module.exports = {
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appBuild: resolveApp(`build/${appname}`),
+  appPublic: resolveApp(`public/${appname}`),
+  appHtml: resolveApp(`public/${appname}/index.html`),
+  appIndexJs: resolveApp(`src/${appname}/index.js`),
   appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
+  appConfigJs: resolveApp(`src/${appname}/appconfig.js`),
+  appSrc: resolveApp(`src/${appname}`),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
@@ -96,12 +100,13 @@ function resolveOwn(relativePath) {
 // config before eject: we're in ./node_modules/react-scripts/config/
 module.exports = {
   appPath: resolveApp('.'),
-  appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
-  appHtml: resolveApp('public/index.html'),
-  appIndexJs: resolveApp('src/index.js'),
+  appBuild: resolveApp(`build/${appname}`),
+  appPublic: resolveApp(`public/${appname}`),
+  appHtml: resolveApp(`public/${appname}/index.html`),
+  appIndexJs: resolveApp(`src/${appname}/index.js`),
   appPackageJson: resolveApp('package.json'),
-  appSrc: resolveApp('src'),
+  appConfigJs: resolveApp(`src/${appname}/appconfig.js`),
+  appSrc: resolveApp(`src/${appname}`),
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
@@ -125,12 +130,13 @@ if (
 ) {
   module.exports = {
     appPath: resolveApp('.'),
-    appBuild: resolveOwn('../../build'),
-    appPublic: resolveOwn('template/public'),
-    appHtml: resolveOwn('template/public/index.html'),
-    appIndexJs: resolveOwn('template/src/index.js'),
+    appBuild: resolveOwn(`../../build/${appname}`),
+    appPublic: resolveOwn(`template/public${appname}`),
+    appHtml: resolveOwn(`template/public/${appname}/index.html`),
+    appIndexJs: resolveOwn(`template/src/${appname}/index.js`),
     appPackageJson: resolveOwn('package.json'),
-    appSrc: resolveOwn('template/src'),
+    appConfigJs: resolveApp(`template/src/${appname}/appconfig.js`),
+    appSrc: resolveOwn(`template/src/${appname}`),
     yarnLockFile: resolveOwn('template/yarn.lock'),
     testsSetup: resolveOwn('template/src/setupTests.js'),
     appNodeModules: resolveOwn('node_modules'),
