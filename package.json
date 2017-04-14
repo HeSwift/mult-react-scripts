@@ -1,6 +1,6 @@
 {
   "name": "mult-react-scripts",
-  "version": "0.0.4",
+  "version": "0.0.7",
   "description": "Customed configuration and scripts for Create React App.",
   "repository": "JoV5/mult-react-scripts",
   "license": "BSD-3-Clause",
@@ -30,7 +30,6 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.24.1",
-    "babel-preset-react-app": "^2.1.1",
     "babel-runtime": "^6.20.0",
     "case-sensitive-paths-webpack-plugin": "1.1.4",
     "chalk": "1.1.3",
@@ -65,10 +64,8 @@
     "whatwg-fetch": "2.0.3"
   },
   "devDependencies": {
-    "lazy-load-react": "^1.3.4",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0",
-    "react-router-dom": "^4.1.1"
+    "react-dom": "^15.3.0"
   },
   "optionalDependencies": {
     "fsevents": "1.0.17"

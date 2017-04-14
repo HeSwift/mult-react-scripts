@@ -15,11 +15,14 @@ module.exports = babelJest.createTransformer({
     [
       "es2015",
       {
-        "modules": false
+        modules: false
       }
     ],
     "stage-0",
     "react"
+  ],
+  plugins: [
+    "transform-es2015-modules-commonjs"
   ],
   babelrc: false,
 });
